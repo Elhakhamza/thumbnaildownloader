@@ -7,16 +7,22 @@ import Image from 'next/image';
 const Header = dynamic(() => import('../components/Header'), { ssr: false });
 const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 
+// Define a type for the thumbnails
+type Thumbnail = {
+  quality: string;
+  url: string;
+};
+
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState('');
-  const [thumbnails, setThumbnails] = useState([]);
+  const [thumbnails, setThumbnails] = useState<Thumbnail[]>([]); // Explicitly define the type for thumbnails
 
   const handleGenerateThumbnail = () => {
     try {
-      let videoId = '';
+      let videoId: string | null = ''; // Allow videoId to be null
 
       if (videoUrl.includes('youtu.be')) {
-        videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+        videoId = videoUrl.split('youtu.be/')[1]?.split('?')[0] || null;
       } else if (videoUrl.includes('youtube.com/watch')) {
         videoId = new URL(videoUrl).searchParams.get('v');
       } else {
@@ -29,16 +35,16 @@ export default function Home() {
 
       setThumbnails([
         { quality: 'Hohe Qualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` },
-        { quality: 'Mittlere Qualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` },
-        { quality: 'Standardqualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/sddefault.jpg` },
-        { quality: 'Niedrige Qualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` },
+        { quality: 'Mittlere Qualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/sddefault.jpg` },
+        { quality: 'Standardqualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` },
+        { quality: 'Niedrige Qualität Thumbnail', url: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` },
       ]);
     } catch (error) {
       alert('Bitte geben Sie eine gültige YouTube-URL ein');
     }
   };
 
-  const handleDownload = async (url, filename) => {
+  const handleDownload = async (url: string, filename: string) => {
     try {
       const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}`;
       const link = document.createElement('a');
@@ -67,7 +73,7 @@ export default function Home() {
         <main className="flex-grow flex flex-col items-center justify-center bg-gray-100 px-4">
           <div className="text-center max-w-2xl mb-6 mt-6">
             <p className="text-gray-700 text-lg">
-            Mit unserem Thumbnail Downloader kannst du YouTube-Thumbnails in HD, 4K oder jeder gewünschten Auflösung kostenlos herunterladen. Einfach die Video-URL einfügen, auf 'Thumbnail herunterladen' klicken und dein Bild sofort erhalten
+              Mit unserem Thumbnail Downloader kannst du YouTube-Thumbnails in HD, 4K oder jeder gewünschten Auflösung kostenlos herunterladen. Einfach die Video-URL einfügen, auf 'Thumbnail herunterladen' klicken und dein Bild sofort erhalten
             </p>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
