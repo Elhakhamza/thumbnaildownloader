@@ -31,8 +31,8 @@ const Blog = () => {
             <a
               key={index}
               href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" // Ensures the link opens in a new tab
+              rel="noopener noreferrer" // Adds security
               className="border rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
             >
               <img src={article.image} alt={article.title} className="w-full h-48 object-cover" />

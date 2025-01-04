@@ -34,7 +34,7 @@ const Header = () => {
         <nav>
           <ul className="hidden md:flex space-x-6">
             <li>
-              <Link href="/https://www.thumbnaildownloader.de/about" className="hover:underline">
+              <Link href="https://www.thumbnaildownloader.de/about" className="hover:underline">
                 Über uns
               </Link>
             </li>
