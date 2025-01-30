@@ -7,6 +7,7 @@ export default function Document() {
       <body className="antialiased">
         <Main />
         <NextScript />
+        <meta name="yandex-verification" content="b6e7ec30fcf8fd1" />
       </body>
     </Html>
   );
