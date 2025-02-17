@@ -66,7 +66,7 @@ export default function Home() {
           name="description"
           content="Kostenloser YouTube Thumbnail Downloader – Lade YouTube Thumbnails in HD, 4K und anderen Auflösungen schnell und einfach herunter. Jetzt URL einfügen und starten!"
         />
-        <link rel="canonical" href="https://thumbnaildownloader.de/" />
+        <link rel="canonical" href="https://www.thumbnaildownloader.de/" />
       </Head>
       <div className="min-h-screen flex flex-col">
         <Header />
