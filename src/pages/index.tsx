@@ -64,7 +64,7 @@ export default function Home() {
         <title>Thumbnail Downloader – YouTube-Thumbnails kostenlos herunterladen</title>
         <meta
           name="description"
-          content="Kostenloser YouTube Thumbnail Downloader – Lade YouTube Thumbnails in HD, 4K und anderen Auflösungen schnell und einfach herunter. Jetzt URL einfügen und starten!"
+          content="Kostenloser YouTube Thumbnail Downloader – Lade YouTube Thumbnails in HD, 4K & mehr schnell und einfach herunter. Jetzt URL eingeben & downloaden!"
         />
         <link rel="canonical" href="https://www.thumbnaildownloader.de/" />
       </Head>
@@ -77,9 +77,9 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
-            <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">
+            <h1 className="text-2xl font-semibold text-gray-800 text-center mb-4">
               YouTube Thumbnail Downloader
-            </h2>
+            </h1>
             <input
               type="text"
               className="w-full p-3 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-primary"
